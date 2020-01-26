@@ -1,5 +1,5 @@
 import React from 'react'
-
+import PropTypes from 'prop-types'
 function CardContacts(props) {
 	return (<ol className="contact-list">
 		{
@@ -24,6 +24,11 @@ function CardContacts(props) {
 			</li>))
 		}
 	</ol>)
+}
+
+CardContacts.propTypes = {
+	contacts: PropTypes.array.isRequired,
+	onDeleteContact: PropTypes.func.isRequired
 }
 
 export default CardContacts;
