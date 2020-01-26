@@ -1,24 +1,29 @@
-import React, {Component} from 'react'
+import React from 'react'
 
-class CardContacts extends Component {
-	render() {
-		console.log(this.props);
+function CardContacts(props) {
+	return (<ol className="contact-list">
+		{
+			props.contacts.map((contact) => (<li key={contact.id} className="contact-list-name" style={{
+					display: 'flex',
+					marginBottom: '1em',
+					backgroundColor: 'white',
+					padding: '1em',
+					maxWidth: '25em'
 
-		return (<ol className="contact-list">
-			{
-				this.props.contacts.map((contact) => (<li key={contact.id} className="contact-list-name">
-					<div className="contact-avatar" style={{
-							backgroundImage: `url(${contact.avatarURL})`
-						}}></div>
-					<div className="contact-details">
-						<p>{contact.name}</p>
-						<p>{contact.handle}</p>
-					</div>
-					<button className='contact-remove'>Remove</button>
-				</li>))
-			}
-		</ol>)
-	}
+				}}>
+				<div className="contact-avatar" style={{
+						backgroundImage: `url(${contact.avatarURL})`
+					}}></div>
+				<div className="contact-details">
+					<p>{contact.name}</p>
+					<p>{contact.handle}</p>
+				</div>
+				<button onClick={() => {
+						props.onDeleteContact(contact)
+					}} className='contact-remove'>Remove</button>
+			</li>))
+		}
+	</ol>)
 }
 
 export default CardContacts;
