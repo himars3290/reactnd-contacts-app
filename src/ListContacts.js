@@ -1,32 +1,33 @@
-import React, {Component} from 'react'
+import React, {
+	Component
+}
+from 'react'
 import PropTypes from 'prop-types'
-import {Link} from 'react-router-dom'
-
+import {
+	Link
+}
+from 'react-router-dom'
 class ListContacts extends Component {
 	static propTypes = {
 		contacts: PropTypes.array.isRequired,
 		onDeleteContact: PropTypes.func.isRequired
 	}
-
 	state = {
 		query: ''
 	}
-
 	updateQuery = (input) => {
-		this.setState(() => ({query: input.trim()}))
+		this.setState(() => ({
+			query: input.trim()
+		}))
 	}
-
 	clearQuery = () => {
 		this.updateQuery('')
 	}
 	render() {
-		const {query} = this.state;
-		const {contacts, onDeleteContact} = this.props;
-
-		const showingContacts = query === ''
-			? contacts
-			: contacts.filter((contact) => (contact.name.toLowerCase().includes(query.toLowerCase())))
-
+		const { query } = this.state;
+		const { contacts, onDeleteContact } = this.props;
+		const showingContacts = query === '' ? contacts : contacts.filter((contact) => (contact.name.toLowerCase()
+			.includes(query.toLowerCase())))
 		return (<div className="list-contacts">
 			<div className="list-contacts-top">
 				<input className='search-contacts' type='text' placeholder='Search Contacts' value={query} onChange={(event) => this.updateQuery(event.target.value)}/>
@@ -69,5 +70,4 @@ class ListContacts extends Component {
 		</div>)
 	}
 }
-
 export default ListContacts;
