@@ -7,8 +7,7 @@ import {Route} from 'react-router-dom'
 console.log(ContactsAPI);
 class App extends Component {
 	state = {
-		contacts: [],
-		screen: 'list'
+		contacts: []
 	}
 
 	componentDidMount() {
@@ -29,9 +28,7 @@ class App extends Component {
 	render() {
 		return (<div>
 
-			<Route exact="exact" path="/" render={() => (<ListContacts contacts={this.state.contacts} onDeleteContact={this.removeContact} onNavigate={() => {
-						this.setState(() => ({screen: 'create'}))
-					}}/>)}/>
+			<Route exact="exact" path="/" render={() => (<ListContacts contacts={this.state.contacts} onDeleteContact={this.removeContact}/>)}/>
 			<Route path="/create" component={CreateContact}/></div>);
 	}
 }
